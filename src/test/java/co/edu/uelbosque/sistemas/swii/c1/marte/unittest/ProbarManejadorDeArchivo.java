@@ -39,4 +39,11 @@ public class ProbarManejadorDeArchivo {
         Assert.assertTrue(texperado.equals(t));
     }
     
+    @Test
+    public void probarLecturaInstrucciones() throws FileNotFoundException, IOException{
+      ManejadorArchivo manejador=new ManejadorArchivo();
+       manejador.setRutaArchivo("src/main/resources/reglas.txt");
+        manejador.getInstrucciones();
+    }
+    
 }

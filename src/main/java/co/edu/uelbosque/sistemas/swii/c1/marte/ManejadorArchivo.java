@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,29 +18,52 @@ import java.io.IOException;
  */
 public class ManejadorArchivo {
 
-    private File reglas;
+    public File reglas;
     FileReader fr;
     BufferedReader br;
+    private ArrayList<String> archivo = new ArrayList<>();  
 
+    public ManejadorArchivo() {
+  
+    }
+   
     public void setRutaArchivo(String ruta) throws FileNotFoundException {
         reglas = new File(ruta);
         if ((!reglas.exists())) {
             throw new FileNotFoundException("El Archivo de Reglas No Existe");
         }
+        
+         this.fr = new FileReader(reglas);
+        this.br = new BufferedReader(fr);
+        
     }
+    
+    
 
     public Tablero getPrimeraLinea() throws IOException {
         Tablero t = new Tablero();
         String[] xy; 
-        fr = new FileReader(reglas);
-        br = new BufferedReader(fr);
+       
+     
         xy = br.readLine().split(" ");
         System.out.println("" + xy[0]);
         System.out.println("" + xy[1]);
         t.setX(Integer.parseInt(xy[0]));
         t.setY(Integer.parseInt(xy[1]));
+       
         return t;
 
     }
 
+    public void getInstrucciones() throws IOException {
+     String lee;
+        while((lee=br.readLine())!=null){           
+             archivo.add(br.readLine());
+        }
+         fr.close(); 
+        
+        
+    }
+
+  
 }
