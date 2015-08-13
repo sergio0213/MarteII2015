@@ -30,7 +30,7 @@ public class ManejadorArchivo {
 
     public Tablero getPrimeraLinea() throws IOException {
         Tablero t = new Tablero();
-        String[] xy;
+        String[] xy; 
         fr = new FileReader(reglas);
         br = new BufferedReader(fr);
         xy = br.readLine().split(" ");
