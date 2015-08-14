@@ -5,24 +5,29 @@
  */
 package co.edu.uelbosque.sistemas.swii.c1.marte.unittest;
 
-
+import co.edu.uelbosque.sistemas.swii.c1.marte.ManejadorArchivo;
 import co.edu.uelbosque.sistemas.swii.c1.marte.Robot;
 import org.testng.annotations.Test;
 
 /**
  *
- * @author ingeneo
+ * @author Scabrera
  */
 public class ProbarRobot {
-    
-    
+
     @Test
-    public void probarPosicionInicialRobot(){
-    Robot robot = new Robot();
+    public void probarPosicionInicialRobot() {
+        Robot robot = new Robot();
+        ManejadorArchivo ma = new ManejadorArchivo();
+         String[] xy;             
+       
+        robot.setX(1);
+        robot.setX(2);
+        robot.setCord("N");
         robot.getX();
         robot.getY();
-        robot.Cord();
-    
+        robot.getCord();
+
     }
-    
+
 }

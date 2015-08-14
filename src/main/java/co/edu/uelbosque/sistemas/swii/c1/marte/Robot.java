@@ -11,16 +11,34 @@ package co.edu.uelbosque.sistemas.swii.c1.marte;
  */
 public class Robot {
 
-  public  void getX() {
-       
+    private int X ;
+    private int Y ;
+    private String cord ;
+
+    public int getX() {
+        return X;
     }
 
-  public  void getY() {
-      
+    public void setX(int X) {
+        this.X = X;
     }
 
-  public  void Cord() {
-      
+    public int getY() {
+        return Y;
     }
+
+    public void setY(int Y) {
+        this.Y = Y;
+    }
+
+    public String getCord() {
+        return cord;
+    }
+
+    public void setCord(String cord) {
+        this.cord = cord;
+    }
+    
+  
     
 }

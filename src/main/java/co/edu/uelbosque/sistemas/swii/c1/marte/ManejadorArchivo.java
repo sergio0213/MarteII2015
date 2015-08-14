@@ -23,6 +23,7 @@ public class ManejadorArchivo {
     BufferedReader br;
     private ArrayList<String> archivo = new ArrayList<>();  
 
+
     public ManejadorArchivo() {
   
     }
@@ -33,7 +34,7 @@ public class ManejadorArchivo {
             throw new FileNotFoundException("El Archivo de Reglas No Existe");
         }
         
-         this.fr = new FileReader(reglas);
+        this.fr = new FileReader(reglas);
         this.br = new BufferedReader(fr);
         
     }
@@ -42,9 +43,7 @@ public class ManejadorArchivo {
 
     public Tablero getPrimeraLinea() throws IOException {
         Tablero t = new Tablero();
-        String[] xy; 
-       
-     
+        String[] xy;             
         xy = br.readLine().split(" ");
         System.out.println("" + xy[0]);
         System.out.println("" + xy[1]);
@@ -65,5 +64,12 @@ public class ManejadorArchivo {
         
     }
 
-  
+      public ArrayList<String> getArchivo() {
+        return archivo;
+    }
+
+    public void setArchivo(ArrayList<String> archivo) {
+        this.archivo = archivo;
+    }
+
 }

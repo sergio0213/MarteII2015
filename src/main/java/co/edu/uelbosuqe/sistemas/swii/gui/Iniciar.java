@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.uelbosque.sistemas.swii.c1.marte;
+package co.edu.uelbosuqe.sistemas.swii.gui;
 
+import co.edu.uelbosque.sistemas.swii.c1.marte.Tablero;
 import java.text.ParseException;
 
 
@@ -14,14 +15,14 @@ import java.text.ParseException;
  */
 public class Iniciar {
 
-  public  void creartablero(Tablero t) {
+  public  void creartablero(Tablero t) throws Exception {
       
      PanelMarte panel=   new PanelMarte();
                 panel.montarTablero(t);
         
     }
     
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) throws ParseException, Exception {
 
        PanelMarte panel=   new PanelMarte();
                 panel.montarTablero(new Tablero(7,6));

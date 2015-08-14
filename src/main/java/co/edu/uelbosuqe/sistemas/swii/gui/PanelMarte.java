@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.uelbosque.sistemas.swii.c1.marte;
+package co.edu.uelbosuqe.sistemas.swii.gui;
 
+import co.edu.uelbosque.sistemas.swii.c1.marte.Tablero;
 import co.edu.uelbosque.sistemas.swii.c1.marte.Tablero;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -54,7 +55,7 @@ public class PanelMarte extends JComponent {
 
     }
 
-    void montarTablero(Tablero t) throws Exception {
+  public  void montarTablero(Tablero t) throws Exception {
 
         PanelMarte p = new PanelMarte(t);
         jf.setDefaultCloseOperation(EXIT_ON_CLOSE);

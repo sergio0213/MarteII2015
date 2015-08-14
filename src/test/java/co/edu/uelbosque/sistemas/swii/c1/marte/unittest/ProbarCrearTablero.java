@@ -6,6 +6,8 @@
 package co.edu.uelbosque.sistemas.swii.c1.marte.unittest;
 
 
+import co.edu.uelbosuqe.sistemas.swii.gui.Iniciar;
+import co.edu.uelbosuqe.sistemas.swii.gui.PanelMarte;
 import co.edu.uelbosque.sistemas.swii.c1.marte.*;
 import java.io.FileNotFoundException;
 import org.testng.annotations.Test;
@@ -17,7 +19,7 @@ import org.testng.annotations.Test;
 public class ProbarCrearTablero {
     @Test
     
-    public void probarIniciarTablero(){
+    public void probarIniciarTablero() throws Exception{
     
     Tablero a = new Tablero(7, 6);
     Iniciar iniciar = new Iniciar();
@@ -31,8 +33,17 @@ public class ProbarCrearTablero {
         PanelMarte pm = new PanelMarte(new Tablero(7,6));
     
     }
+    
+    
     @Test (expectedExceptions = Exception.class)
     public void probarTamanoDeTablero() throws Exception{
+    PanelMarte pn = new PanelMarte(new Tablero(-2, -8));
+      
+    
+    }
+    
+      @Test 
+    public void probarTamanoDeTableroOK() throws Exception{
     PanelMarte pn = new PanelMarte(new Tablero(-2, -8));
       
     
