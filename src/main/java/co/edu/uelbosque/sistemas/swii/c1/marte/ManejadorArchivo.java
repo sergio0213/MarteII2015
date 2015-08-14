@@ -54,13 +54,13 @@ public class ManejadorArchivo {
 
     }
 
-    public void getInstrucciones() throws IOException {
+    public ArrayList<String> getInstrucciones() throws IOException {
      String lee;
         while((lee=br.readLine())!=null){           
              archivo.add(br.readLine());
         }
          fr.close(); 
-        
+        return archivo;
         
     }
 
