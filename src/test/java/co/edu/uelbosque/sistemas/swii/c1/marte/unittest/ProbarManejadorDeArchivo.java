@@ -6,6 +6,7 @@
 package co.edu.uelbosque.sistemas.swii.c1.marte.unittest;
 
 import co.edu.uelbosque.sistemas.swii.c1.marte.ManejadorArchivo;
+import co.edu.uelbosque.sistemas.swii.c1.marte.Robot;
 import co.edu.uelbosque.sistemas.swii.c1.marte.Tablero;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -36,14 +37,17 @@ public class ProbarManejadorDeArchivo {
         ManejadorArchivo manejador=new ManejadorArchivo();
         manejador.setRutaArchivo("src/main/resources/reglas.txt");
         Tablero t=manejador.getPrimeraLinea();
-        Assert.assertTrue(texperado.equals(t));
+        Assert.assertEquals(t, texperado);
     }
     
     @Test
-    public void probarLecturaInstrucciones() throws FileNotFoundException, IOException{
-      ManejadorArchivo manejador=new ManejadorArchivo();
-       manejador.setRutaArchivo("src/main/resources/reglas.txt");
-        manejador.getInstrucciones();
+    public void elRobotSePuedeInstanciarConSuCoordenadaInicial() throws FileNotFoundException, IOException{
+        Robot esperado=new Robot(1,2,"N");
+        ManejadorArchivo manejador=new ManejadorArchivo();
+        manejador.setRutaArchivo("src/main/resources/reglas.txt");
+        Robot x=manejador.getPosRobot();
+        Assert.assertEquals(x, esperado);
+
     }
     
 }

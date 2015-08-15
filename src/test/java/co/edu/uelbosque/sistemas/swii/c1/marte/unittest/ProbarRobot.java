@@ -18,43 +18,45 @@ public class ProbarRobot {
 
     @Test
     public void probarPosicionInicialRobot() {
-        Robot robot = new Robot();
-        ManejadorArchivo ma = new ManejadorArchivo();
-      
-        robot.setX(1);
-        robot.setX(2);
-        robot.setCord("N");
-        robot.getX();
-        robot.getY();
-        robot.getCord();
+//        Robot robot = new Robot();
+//        ManejadorArchivo ma = new ManejadorArchivo();
+//      
+//        robot.setX(1);
+//        robot.setX(2);
+//        robot.setCord("N");
+//        robot.getX();
+//        robot.getY();
+//        robot.getCord();
 
     }
-    
-       @Test
+
+    @Test
     public void probarAsignarPosicion() throws IOException {
-        Robot robot = new Robot();
-        ManejadorArchivo ma = new ManejadorArchivo();
-          ma.setRutaArchivo("src/main/resources/reglas.txt");
-        String[]xyc;
-        xyc =  ma.getInstrucciones().get(0).split(" ");
-       
-        robot.setX(Integer.parseInt(xyc[0]));
-        robot.setY(Integer.parseInt(xyc[1]));
-        robot.setCord(xyc[2]);
-           System.out.println("x="+ robot.getX() + " Y="+ robot.getY()+" Or"+ robot.getCord());
-       
-        robot.getCord();
+//        Robot robot = new Robot();
+//        ManejadorArchivo ma = new ManejadorArchivo();
+//          ma.setRutaArchivo("src/main/resources/reglas.txt");
+//        String[]xyc;
+//        xyc =  ma.getInstrucciones().get(0).split(" ");
+//       
+//        robot.setX(Integer.parseInt(xyc[0]));
+//        robot.setY(Integer.parseInt(xyc[1]));
+//        robot.setCord(xyc[2]);
+//           System.out.println("x="+ robot.getX() + " Y="+ robot.getY()+" Or"+ robot.getCord());
+//       
+//        robot.getCord();
 
     }
-     @Test (expectedExceptions = NumberFormatException.class)
-        public void probarPosicionInvalida()  {
+
+    @Test(expectedExceptions = NumberFormatException.class)
+    public void probarPosicionInvalida() {
+
         Robot robot = new Robot();
-                          
+
         robot.setX(-1);
         robot.setY(-2);
         robot.setCord("X");
-           System.out.println("x="+ robot.getX() + " Y="+ robot.getY()+" Or"+ robot.getCord());
-       
+        System.out.println("x=" + robot.getX() + " Y=" + robot.getY() + " Or" + robot.getCord());
+
         robot.getCord();
 
     }

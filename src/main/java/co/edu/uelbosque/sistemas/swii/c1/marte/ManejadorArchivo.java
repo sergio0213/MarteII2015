@@ -21,55 +21,64 @@ public class ManejadorArchivo {
     public File reglas;
     FileReader fr;
     BufferedReader br;
-    private ArrayList<String> archivo = new ArrayList<>();  
-
+    private ArrayList<String> archivo;
 
     public ManejadorArchivo() {
-  
+        archivo = new ArrayList<>();
     }
-   
+
     public void setRutaArchivo(String ruta) throws FileNotFoundException {
         reglas = new File(ruta);
         if ((!reglas.exists())) {
             throw new FileNotFoundException("El Archivo de Reglas No Existe");
         }
-        
+
         this.fr = new FileReader(reglas);
         this.br = new BufferedReader(fr);
-        
+
     }
-    
-    
 
     public Tablero getPrimeraLinea() throws IOException {
         Tablero t = new Tablero();
-        String[] xy;             
+        String[] xy;
         xy = br.readLine().split(" ");
-        System.out.println("" + xy[0]);
-        System.out.println("" + xy[1]);
+
         t.setX(Integer.parseInt(xy[0]));
         t.setY(Integer.parseInt(xy[1]));
-       
+
         return t;
 
     }
 
-    public ArrayList<String> getInstrucciones() throws IOException {
-     String lee;
-        while((lee=br.readLine())!=null){           
-             archivo.add(br.readLine());
+    private ArrayList<String> getInstrucciones() throws IOException {
+        String lee;
+        while ((lee = br.readLine()) != null) {
+            archivo.add(br.readLine());
         }
-         fr.close(); 
+        fr.close();
         return archivo;
-        
+
     }
 
-      public ArrayList<String> getArchivo() {
+    public ArrayList<String> getArchivo() {
         return archivo;
     }
 
     public void setArchivo(ArrayList<String> archivo) {
         this.archivo = archivo;
+    }
+
+    public Robot getPosRobot() throws IOException {
+        if (this.archivo.isEmpty()) {
+            getInstrucciones();
+        }
+        String lineaRobot = this.archivo.get(0);
+        String parts[] = lineaRobot.split(" ");
+        int x = Integer.parseInt(parts[0]);
+        int y = Integer.parseInt(parts[1]);
+        String orientacion = parts[2];
+
+        return new Robot(x, y, orientacion);
     }
 
 }

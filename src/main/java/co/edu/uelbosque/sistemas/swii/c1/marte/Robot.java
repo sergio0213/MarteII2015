@@ -13,7 +13,16 @@ public class Robot {
 
     private int X;
     private int Y;
-    private String cord;
+    private String ori;
+
+    public Robot() {
+    }
+
+    public Robot(int X, int Y, String cord) {
+        this.X = X;
+        this.Y = Y;
+        this.ori = cord;
+    }
 
     public int getX() {
         return X;
@@ -40,16 +49,31 @@ public class Robot {
 
     public String getCord() {
 
-        return cord;
+        return ori;
     }
 
     public void setCord(String cord) {
         if (cord.equals("O") || cord.equals("E") || cord.equals("S") || cord.equals("N")) {
-            this.cord = cord;
+            this.ori = cord;
         } else {
             throw new NumberFormatException("Cordenada Inicial Y invalida");
         }
 
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof Robot)) {
+            return false;
+        }
+        Robot tmp = (Robot) obj;
+        return (this.X == tmp.X && this.Y == tmp.Y && this.ori.equals(tmp.ori));
     }
 
 }
