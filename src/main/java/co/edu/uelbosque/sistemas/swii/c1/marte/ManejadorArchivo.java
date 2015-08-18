@@ -60,7 +60,11 @@ public class ManejadorArchivo {
 
     }
 
-    public ArrayList<String> getArchivo() {
+    public ArrayList<String> getArchivo() throws Exception {
+        if (archivo.isEmpty()) {
+                throw new Exception("El archivo esta Vacio");
+            }
+        
         return archivo;
     }
 

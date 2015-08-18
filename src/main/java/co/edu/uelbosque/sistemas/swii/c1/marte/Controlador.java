@@ -16,21 +16,18 @@ public class Controlador {
 
     ManejadorArchivo manejador = new ManejadorArchivo();
     Robot robot;
-
+    Movimiento mov;
     public Controlador() throws FileNotFoundException, IOException {
         manejador.setRutaArchivo("src/main/resources/reglas.txt");
-        robot = manejador.getPosRobot();
+      
+        mov = new Movimiento();
     }
 
-    public void controlarInstrucciones() throws IOException {
+    public void controlarInstrucciones() throws IOException, Exception {
 
-//       manejador.getArchivo().get(0);
-//       Robot robot = new Robot();
-//       String[]xyc;
-//       xyc =  manejador.getInstrucciones().get(0).split(" ");
-//        robot.setX(Integer.parseInt(xyc[0]));
-//        robot.setY(Integer.parseInt(xyc[1]));
-//        robot.setCord(xyc[2]);
+      robot = manejador.getPosRobot();
+      robot=  mov.calcularCordanadas(robot.getX(), robot.getY(), robot.getCord(), manejador.getArchivo().get(1));
+
     }
 
 }

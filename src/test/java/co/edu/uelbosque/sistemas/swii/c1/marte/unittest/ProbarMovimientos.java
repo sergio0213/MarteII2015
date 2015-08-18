@@ -1,6 +1,7 @@
 package co.edu.uelbosque.sistemas.swii.c1.marte.unittest;
 
 
+import co.edu.uelbosque.sistemas.swii.c1.marte.Controlador;
 import co.edu.uelbosque.sistemas.swii.c1.marte.Movimiento;
 import org.testng.annotations.Test;
 
@@ -19,7 +20,7 @@ public class ProbarMovimientos {
    public void probarMovimientosIniciales() throws Exception{
     Movimiento mo = new Movimiento();
     
-    mo.calcularCordanadas(1, 2, "N", "IAAAA");
+    mo.calcularCordanadas(1, 2,"N","IAIAIAIAA");
    
    }
    
@@ -28,6 +29,12 @@ public class ProbarMovimientos {
     Movimiento mo = new Movimiento();
     mo.calcularCordanadas(1, 2, "N", "IAXYAA");
    
+   }
+   
+    @Test
+   public void probarMovimientosRobot() throws Exception{
+        Controlador c = new Controlador();
+   c.controlarInstrucciones();
    }
     
 }

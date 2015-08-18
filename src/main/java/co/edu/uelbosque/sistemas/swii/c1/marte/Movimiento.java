@@ -58,16 +58,16 @@ public class Movimiento {
                 case "A":
                     switch (r.getCord()) {
                         case "O":
-                           r.setX(r.getX()-1);
+                            r.setX(r.getX() - 1);
                             break;
                         case "E":
-                          r.setX(r.getX()+1);
+                            r.setX(r.getX() + 1);
                             break;
                         case "S":
-                            r.setY(r.getY()-1);
+                            r.setY(r.getY() - 1);
                             break;
                         case "N":
-                           r.setY(r.getY()+1);
+                            r.setY(r.getY() + 1);
                             break;
 
                     }
@@ -75,11 +75,11 @@ public class Movimiento {
 
                 default:
 
-                    throw new Exception("Error Instruccion no valida");
+                    throw new Exception("Error Instrucción no valida");
 
             }
         }
-     
+        System.err.println("x: "+r.getX()+" y"+r.getY()+" o:"+r.getCord());
         return r;
     }
 
