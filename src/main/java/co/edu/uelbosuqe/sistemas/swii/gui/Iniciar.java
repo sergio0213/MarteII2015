@@ -5,6 +5,7 @@
  */
 package co.edu.uelbosuqe.sistemas.swii.gui;
 
+import co.edu.uelbosque.sistemas.swii.c1.marte.Controlador;
 import co.edu.uelbosque.sistemas.swii.c1.marte.Tablero;
 import java.text.ParseException;
 
@@ -23,9 +24,9 @@ public class Iniciar {
     }
     
     public static void main(String[] args) throws ParseException, Exception {
-
+       Controlador contr = new Controlador();
        PanelMarte panel=   new PanelMarte();
-                panel.montarTablero(new Tablero(7,6));
+                panel.montarTablero(contr.getcontrolarTablero());
 
     }
 }

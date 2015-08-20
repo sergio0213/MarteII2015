@@ -27,7 +27,7 @@ public class ManejadorArchivo {
         archivo = new ArrayList<>();
     }
 
-    public void setRutaArchivo(String ruta) throws FileNotFoundException {
+    public void setRutaArchivo(String ruta) throws FileNotFoundException, IOException {
         reglas = new File(ruta);
         if ((!reglas.exists())) {
             throw new FileNotFoundException("El Archivo de Reglas No Existe");
@@ -35,7 +35,7 @@ public class ManejadorArchivo {
 
         this.fr = new FileReader(reglas);
         this.br = new BufferedReader(fr);
-
+br.close();
     }
 
     public Tablero getPrimeraLinea() throws IOException {
@@ -51,9 +51,9 @@ public class ManejadorArchivo {
     }
 
     private ArrayList<String> getInstrucciones() throws IOException {
-        String lee;
+        String lee=br.readLine();
         while ((lee = br.readLine()) != null) {
-            archivo.add(br.readLine());
+            archivo.add(lee);
         }
         fr.close();
         return archivo;

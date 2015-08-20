@@ -14,20 +14,37 @@ import java.io.IOException;
  */
 public class Controlador {
 
-    ManejadorArchivo manejador = new ManejadorArchivo();
+    ManejadorArchivo manejador ;
     Robot robot;
     Movimiento mov;
+
     public Controlador() throws FileNotFoundException, IOException {
-        manejador.setRutaArchivo("src/main/resources/reglas.txt");
-      
+      manejador= new ManejadorArchivo();
+      manejador.setRutaArchivo("src/main/resources/reglas.txt");
         mov = new Movimiento();
     }
 
-    public void controlarInstrucciones() throws IOException, Exception {
-
-      robot = manejador.getPosRobot();
-      robot=  mov.calcularCordanadas(robot.getX(), robot.getY(), robot.getCord(), manejador.getArchivo().get(1));
-
+    public Controlador(String ruta) throws FileNotFoundException, IOException {
+        manejador.setRutaArchivo(ruta);
+        mov = new Movimiento();
     }
 
+    public Robot controlarInstrucciones() throws IOException, Exception {
+
+        if (manejador.getArchivo().get(1).isEmpty()) {
+            throw new NullPointerException("Error el archivo no contiene las instrucciones de movimiento");
+        }
+        robot = manejador.getPosRobot();
+        robot = mov.calcularCordanadas(robot.getX(), robot.getY(), robot.getCord(), manejador.getArchivo().get(1));
+        return robot;
+
+    }
+    
+    public Tablero  getcontrolarTablero() throws IOException{    
+       
+        Tablero t=manejador.getPrimeraLinea();               
+        return t;
+    
+    }
+ 
 }

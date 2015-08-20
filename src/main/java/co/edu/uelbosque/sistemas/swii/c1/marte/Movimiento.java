@@ -17,6 +17,7 @@ public class Movimiento {
         for (int i = 0; i < orden.length(); i++) {
             String letra = orden.substring(i, i + 1);
             System.out.println("" + letra);
+            
             switch (orden.substring(i, i + 1)) {
 
                 case "I":
