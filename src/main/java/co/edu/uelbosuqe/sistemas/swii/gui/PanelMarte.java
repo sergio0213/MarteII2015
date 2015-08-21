@@ -17,6 +17,7 @@ import java.awt.Toolkit;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -36,11 +37,12 @@ public class PanelMarte extends JComponent {
             throw new Exception("Numero no valido");
         }
         this.tablero = tablero;
+        this.robot = new Robot(1,3,"");
     }
 
     @Override
     public void paintComponent(Graphics g) {
-        System.out.print(tablero.getX() + "+" + tablero.getY());
+
         g.drawLine(1, tablero.getY() * 50, tablero.getX() * 50 + 30, tablero.getY() * 50);
 
         g.drawLine(20, tablero.getY() * 50, 20, 1);
@@ -59,7 +61,11 @@ public class PanelMarte extends JComponent {
         }
         Toolkit t = Toolkit.getDefaultToolkit();
         Image imagen = t.getImage("src/main/resources/S.png");
-        g.drawImage(imagen, 20, 10, this);
+        System.err.println("paintComponent");
+        if (this.robot.getX() != 0) {
+
+        g.drawImage(imagen, robot.getX(), 0, this);
+            }
 
     }
 
@@ -75,10 +81,12 @@ public class PanelMarte extends JComponent {
 
     }
 
-    public void dibujarRobot() throws Exception {
-        Controlador c = new Controlador();
-        robot = c.controlarInstrucciones();
-        
+    public void dibujarRobot(Controlador c) throws Exception {
+
+        this.robot = c.controlarInstrucciones();
+     //   validate();
+        repaint();
+        System.err.println("robot" + robot.getX());
     }
 
 }

@@ -30,11 +30,11 @@ public class Controlador {
     }
 
     public Robot controlarInstrucciones() throws IOException, Exception {
-
+         robot = manejador.getPosRobot();
         if (manejador.getArchivo().get(1).isEmpty()) {
             throw new NullPointerException("Error el archivo no contiene las instrucciones de movimiento");
         }
-        robot = manejador.getPosRobot();
+      
         robot = mov.calcularCordanadas(robot.getX(), robot.getY(), robot.getCord(), manejador.getArchivo().get(1));
         return robot;
 

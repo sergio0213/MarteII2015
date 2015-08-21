@@ -20,20 +20,20 @@ import org.testng.annotations.Test;
 public class ProbarManejadorDeArchivo {
     
     @Test(expectedExceptions = FileNotFoundException.class)
-    public void elArchivoNoExiste() throws FileNotFoundException{
+    public void elArchivoNoExiste() throws FileNotFoundException, IOException{
         ManejadorArchivo manejador=new ManejadorArchivo();
         manejador.setRutaArchivo("reglas.txt");
     }
     
     @Test
-    public void elArchivoExiste() throws FileNotFoundException{
+    public void elArchivoExiste() throws FileNotFoundException, IOException{
         ManejadorArchivo manejador=new ManejadorArchivo();
         manejador.setRutaArchivo("src/main/resources/reglas.txt");
     }
     
     @Test
     public void laPrimerLineaDelArchivoEsCorrecta() throws FileNotFoundException, IOException{
-        Tablero texperado=new Tablero(7,6);
+        Tablero texperado=new Tablero(5,5);
         ManejadorArchivo manejador=new ManejadorArchivo();
         manejador.setRutaArchivo("src/main/resources/reglas.txt");
         Tablero t=manejador.getPrimeraLinea();

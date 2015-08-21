@@ -22,7 +22,7 @@ public class ManejadorArchivo {
     FileReader fr;
     BufferedReader br;
     private ArrayList<String> archivo;
-
+int contador;
     public ManejadorArchivo() {
         archivo = new ArrayList<>();
     }
@@ -35,28 +35,30 @@ public class ManejadorArchivo {
 
         this.fr = new FileReader(reglas);
         this.br = new BufferedReader(fr);
-br.close();
+
     }
 
     public Tablero getPrimeraLinea() throws IOException {
+        
         Tablero t = new Tablero();
         String[] xy;
         xy = br.readLine().split(" ");
-
         t.setX(Integer.parseInt(xy[0]));
         t.setY(Integer.parseInt(xy[1]));
-
+        contador++;
         return t;
 
     }
 
     private ArrayList<String> getInstrucciones() throws IOException {
-        String lee=br.readLine();
+        String lee;
+         if (contador<1) {
+                lee = br.readLine();
+            }
         while ((lee = br.readLine()) != null) {
             archivo.add(lee);
         }
-        fr.close();
-        return archivo;
+         return archivo;
 
     }
 
@@ -74,6 +76,7 @@ br.close();
 
     public Robot getPosRobot() throws IOException {
         if (this.archivo.isEmpty()) {
+           //this.br = new BufferedReader(fr);
             getInstrucciones();
         }
         String lineaRobot = this.archivo.get(0);
